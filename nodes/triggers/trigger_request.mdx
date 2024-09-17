@@ -1,0 +1,69 @@
+---
+title: Request
+description: Use this block to trigger your workflow by sending a HTTP request to the Recase API
+---
+
+### Configuring the trigger request
+<Frame>
+  <img src="/images/nodes/trigger_request_config.png" width="400"/>
+</Frame>
+
+In the Recase workflow builder, you can define a list of data points you want to send in the trigger request body. Each data point takes on a 'key' and 'type'. For instance, an appropriate HTTP request body corresponding to the config shown above is:
+
+```json
+{
+    "risk_score": 0,
+    "industry": "Gaming",
+    "country": "United Kingdom",
+    "full_name": "John Doe",
+    "monthly_tx_volume": 3000,
+}
+```
+
+These data points can then be used in following steps of the workflow!
+
+
+
+### Triggering the workflow
+You can trigger the workflow by sending a POST request to the Recase API:
+
+```bash Request
+  curl --request POST \
+    --url https://api.recaseai.com/v1/workflows/{workflow_id}/run
+    --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer {API_KEY}' \
+    --data '{
+        "example_field": "Example field value"
+    }'
+    -- 
+```
+
+Here, the **workflow_id** is specified as a parameter in the URL string, and the data to send should match what you have configured in Recase.
+
+### Response
+<Expandable title="properties">
+    <ResponseField name="workflow_id" type="string">
+      Workflow ID
+    </ResponseField>
+
+    <ResponseField name="steps" type="array[Step]">
+      Array of steps
+        <Expandable title="Step">
+            <ResponseField name="node_id" type="string">
+                ID of the node (e.g. 'trigger_request') that was ran
+            </ResponseField>
+            <ResponseField name="created" type="float">
+                Unix timestamp of when step was run
+            </ResponseField>
+            <ResponseField name="status" type="string">
+                Status of the run. Can be 'success', 'failed', 'ongoing'
+            </ResponseField>
+            <ResponseField name="data" type="any">
+                Data associated with that run
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+</Expandable>
+{/* <ResponseField name="user" type="User Object">
+  
+</ResponseField> */}

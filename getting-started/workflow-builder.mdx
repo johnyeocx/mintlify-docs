@@ -1,0 +1,36 @@
+---
+title: Workflow Builder
+---
+
+The workflow builder is where you will build your risk decisioning flow. The example below shows a sample Transaction Monitoring flow.
+
+<img
+  className="block"
+  src="/images/workflow_builder.png"
+  alt="Workflow Builder"
+/>
+
+A workflow is made up of **steps**. In the image above, the steps are `Request`, `SEON`, `Score` and so on. Each step falls into one of the following categories:
+
+### Trigger
+This is what triggers a workflow and can be one of the following:
+
+1. A HTTP request sent by your system
+2. A CRON schedule
+3. An event from an external data source (e.g. Stripe sending in disputes)
+
+### Data sources
+Data sources are used to enrich your decisioning process by allowing you to configure rules around more data points.
+
+Recase allows you to easily connect and pull in risk data from external providers (e.g. SEON for fraud, ComplyAdvantage for KYC checks). You can use our no-code connectors to quickly pull in the data you want without dedicating engineering effort to interact with these data providers' APIs.
+
+### Rules & Actions
+These are the pre-built utility actions provided by Recase to give you the tools you need to design a comprehensive decisioning flow. The most common example would be:
+
+1. Rules: You can use these to configure different paths for your workflow to take based on conditions on data
+2. POST Request: You can use this send / retrieve data from your internal backend
+3. Scoring: You can use this to easily assign a score to each case and update the score based on conditions on data
+
+Other components include document creation (for STR, disputes, etc.), Live Form (for taking in manual inputs) and more.
+
+

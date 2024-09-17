@@ -1,0 +1,25 @@
+---
+title: Outgoing Request
+description: Use this block to send a POST or GET request to your API
+---
+
+The `Outgoing Request` step is useful for fetching data from your internal backend, or sending event updates.
+
+### Configuring the outgoing request step
+
+**1. Request URL**
+
+This is the request URL and method that will be executed during this step.
+<Frame>
+    <img src="/images/nodes/outgoing_request_1.png" width="400"/>
+</Frame>
+
+**2. Response Body**
+
+This is the response body expected when making the request above:
+
+<Frame>
+  <img src="/images/nodes/trigger_request_config.png" width="400"/>
+</Frame>
+
+To build your response body, specify a list of 'key' and 'type', for each data point returned. These can then be used in subsequent steps of the workflow.
